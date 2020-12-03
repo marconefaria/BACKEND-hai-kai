@@ -1,3 +1,4 @@
+
 exports.up = function(knex) {
     return knex.schema.createTable("category", function(table) {
         table.increments("category_id").primary().notNullable();
