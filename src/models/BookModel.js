@@ -2,6 +2,7 @@ const { v4: uuidv4 } = require('uuid');
 const connection = require("../database/connection");
 //const _ = require("loadash");
 
+
 module.exports = {
     async create(book){
         const book_id = uuidv4();
