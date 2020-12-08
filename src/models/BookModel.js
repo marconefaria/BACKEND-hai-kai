@@ -1,6 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const connection = require("../database/connection");
-//const _ = require("loadash");
+const _ = require("lodash");
 
 
 module.exports = {
@@ -20,20 +20,26 @@ module.exports = {
         return result;
     },
 
+    async getAll(book_id) {
+        const result = await connection("book").where({ book_id }).select("*");
+    
+        return result;
+    },    
+
     //Filtros são opcionais! se não der certo eu posso filtrar pelo front msm, é importante que os livros sejam mostrados e só!
     async getByIdWithFilters(book_id, {categoryName}){
-        const filter = { "book.book_id": book_id };
-        if (categoryName) filter["category.name"] = categoryName;
+        const filter = { "book.category_id": book_id };
+        if (categoryName) filter["category.nome"] = categoryName;
 
         let livros = await connection("book")
-            .innerJoin("category", "book.book_id", "category.book_id")
+            
             .where(filter)
-            .select("book.");
+            .select("book.*");
 
         livros.map((book) => book.book_id);
         livros = _.groupBy(livros, "book_id");
 
-        return livros;
+        return note;
     },
 
     async updateById(book_id, book){

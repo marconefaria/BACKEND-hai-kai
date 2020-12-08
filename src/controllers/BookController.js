@@ -13,6 +13,7 @@ module.exports = {
             });
         }
     },
+
     async getById(request, response){
         try{
             const { book_id } = request.params;

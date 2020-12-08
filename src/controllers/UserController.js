@@ -1,4 +1,3 @@
-const { create, getById } = require("../models/UserModel");
 const UserModel = require("../models/UserModel");
 
 module.exports = {
