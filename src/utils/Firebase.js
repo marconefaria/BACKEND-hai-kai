@@ -22,10 +22,11 @@ module.exports = {
             return result.user.uid;
     },
 
-    async login(email, senha){
+    async login(email, senha) {
         const result = await firebase
-            .auth()
-            .signWithEmailAndPassword(email, senha);
+          .auth()
+          .signInWithEmailAndPassword(email, senha);
+    
         return result.user.uid;
-    }
+      },
 }

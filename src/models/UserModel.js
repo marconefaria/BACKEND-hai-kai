@@ -10,6 +10,14 @@ module.exports = {
         return user_id;
     },
 
+    async getByFields(fields) {
+        const result = await connection("user")
+          .where(fields)
+          .select("*")
+          .first();
+        return result;
+      },
+
     async getById(user_id){
         const result = await connection("user")
         .where({ user_id })
