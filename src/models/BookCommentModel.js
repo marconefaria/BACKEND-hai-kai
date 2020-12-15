@@ -5,7 +5,7 @@ module.exports = {
         const result = await connection("comment").insert(comment);
         return result;
     },
-
+    
     async getById({ comment_id, book_id }){
         const result = await connection("comment")
         .where({ comment_id, book_id })
